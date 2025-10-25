@@ -3,6 +3,30 @@
 function sayHello() {
     alert("Hello, world from javascript!");
 }
+
+function isUpperCase(str) {
+  return str === str.toUpperCase() &&
+         str !== str.toLowerCase();
+}
+
+function isStrongPassword(password) {
+    if (password.length < 8) return false;
+    if (password.includes("password")) return false;
+    for (let char of password) {
+        if (isUpperCase(char)) return true;
+    }
+    return false;
+}
+
+document.getElementById("checkPasswordBtn").addEventListener("click", function() {
+    const password = document.getElementById("password").value;
+    if (isStrongPassword(password)) {
+        alert("Password is strong!");
+    } else {
+        alert("Password is weak!");
+    }
+});
+
 // This function will be called when the link is clicked
 // It shows an alert with a message
 // Ensure the DOM is fully loaded before attaching the event listener
